@@ -18,6 +18,8 @@ public class InputOutput {
 	public void printResult(double result) {
 		
 		System.out.println(result);
+		
+		
 	}
 
 }
