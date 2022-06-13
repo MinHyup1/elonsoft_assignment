@@ -13,8 +13,7 @@ public class Calculatorapplication {
 		
 		while (isContinue) {
 			io.printResult(io.getInput());
-			System.out.println("============================================================");
-			System.out.println("============================================================");
+
 		}
 		
 	}
