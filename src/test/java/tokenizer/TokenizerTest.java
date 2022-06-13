@@ -42,13 +42,25 @@ class TokenizerTest {
 	@Test
 	public void test_연속된숫자Parsing() throws Exception {
 	    // given
-		String text = "12 + 25 + 36";
+		String text = "1.22 + 25 + 36";
 		Tokenizer tokenizer = new Tokenizer(text);
 
 	    // when
 		String result = tokenizer.nextToken();
-
 	    // then
-		assertEquals(result, "12");
+		assertEquals(result, "1.22");
+	}
+
+	@Test
+	public void test_연산자Parsing() throws Exception {
+		// given
+		String text = "1.22 ++++ 25 + 36";
+		Tokenizer tokenizer = new Tokenizer(text);
+
+		// when
+		String result = tokenizer.nextToken();
+		result = tokenizer.nextToken();
+		// then
+		assertEquals(result, "+");
 	}
 }

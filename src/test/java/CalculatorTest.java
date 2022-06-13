@@ -1,10 +1,12 @@
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculatorTest {
@@ -166,6 +168,18 @@ class CalculatorTest {
 		}
 		System.out.println("stacks => "+ stacks);
 	}
+
+	@Test
+	public void expressionBuilder() {
+		Expression expression = new ExpressionBuilder("33..5 +++ 24  (31 + 1)").build();
+		double result = expression.evaluate();
+		System.out.println(result);
+		StringTokenizer st = new StringTokenizer("1234");
+		while (st.hasMoreElements()){
+			System.out.println(st.nextToken());
+		}
+	}
+
 	/**
 	 * 요구조건.
 	 * 입력한 수식에 대한 계산 결과를 보여준다.

@@ -39,7 +39,70 @@ public class Tokenizer {
 		while (Character.isWhitespace(ch)){
 			ch = expression[++position];
 		}
+		// 숫자에 대한 처리
+		if(Character.isDigit(ch) || ch == '.'){
+			// 다음 데이터가 숫자 또는 소수점이면 합친다.
+			return numberParsing();
+		}
+		if(isOperator(ch)){
+
+		}
+		if(isBracket(ch)){
+
+		}
+		// 자동 * 처리를 하기 위해선 이전 ch가 필요하다.
+		if(isAutoMultiply(ch)){
+
+		}
 		position++;
 		return Character.toString(ch);
+	}
+
+	private boolean isAutoMultiply(char ch) {
+		return true;
+	}
+
+	private boolean isBracket(char ch) {
+		return true;
+	}
+
+	private boolean isOperator(char ch) {
+		return true;
+	}
+
+	/**
+	 * 현재 포지션 기준으로 다음 데이터가 숫자인지 판별해서 숫자만큼 합쳐서 돌려준다.
+	 * @return
+	 */
+	private String numberParsing() {
+		int currentPosition = this.position;
+		int nextPosition = 1;
+		String result = Character.toString(expression[currentPosition]);
+		// 현재 데이터가 마지막 데이터 인지 확인
+		if(isEndPosition(currentPosition + 1)){
+			return result;
+		}
+		while (!isEndPosition(currentPosition + nextPosition) && isNumber(expression[currentPosition + nextPosition])){
+			result += expression[currentPosition + nextPosition];
+			nextPosition++;
+		}
+		logger.debug("result {} ", result);
+		// 최종 Number 검증
+		Double.parseDouble(result);
+		return result;
+	}
+
+	private boolean isNumber(char ch) {
+		logger.debug("isNumber {} ", ch);
+		return Character.isDigit(ch) || ch == '.';
+	}
+
+	/**
+	 * 입력 받은 포지션이 마지막 포지션인지 확인
+	 * @param  position :  포지션 정보
+	 * @return
+	 */
+	private boolean isEndPosition(int position) {
+		return this.expressionLength < position;
 	}
 }
