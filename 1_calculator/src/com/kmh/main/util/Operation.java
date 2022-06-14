@@ -1,7 +1,7 @@
 package com.kmh.main.util;
 
 
-public class Calculator {
+public class Operation {
 	
 	
 	public String puls(double num_1, double num_2) {

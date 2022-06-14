@@ -2,12 +2,12 @@ package com.kmh.test;
 
 import org.junit.jupiter.api.Test;
 
-import com.kmh.main.util.Calculator;
+import com.kmh.main.util.Operation;
 import com.kmh.main.util.InputOutput;
 
 class CalculatorTest {
 	InputOutput io = new InputOutput();
-	Calculator calculator = new Calculator();
+	Operation operator = new Operation();
 	
 	
 	@Test
@@ -18,22 +18,22 @@ class CalculatorTest {
 	
 	@Test
 	void plusTest() {
-		System.out.println(calculator.puls(0.11111, 0.55555));
+		System.out.println(operator.puls(0.11111, 0.55555));
 	}
 	
 	@Test
 	void minusTest() {
-		System.out.println(calculator.minus(0.9999, 0.2222));
+		System.out.println(operator.minus(0.9999, 0.2222));
 	}
 	
 	@Test
 	void multiplyTest() {
-		System.out.println(calculator.multiply(1000, -3));
+		System.out.println(operator.multiply(1000, -3));
 	}
 	
 	@Test
 	void divideTest() {
-		System.out.println(calculator.divide(2.5, 3));
+		System.out.println(operator.divide(2.5, 3));
 	}
 
 }
