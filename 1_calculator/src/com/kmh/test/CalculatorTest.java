@@ -10,10 +10,10 @@ class CalculatorTest {
 	Operation operator = new Operation();
 	
 	
+	//실패한 코드도 테스트코드 테스트코드는 기록?..O
 	@Test
 	void getInputTest() {
 		System.out.println(io.getInput());
-		
 	}
 	
 	@Test
@@ -35,5 +35,12 @@ class CalculatorTest {
 	void divideTest() {
 		System.out.println(operator.divide(2.5, 3));
 	}
+	
+	@Test
+	void test() {
+		String st = null;
+		System.out.println(st);
+	}
+	
 
 }
