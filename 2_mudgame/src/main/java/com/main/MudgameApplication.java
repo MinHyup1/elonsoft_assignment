@@ -31,7 +31,6 @@ public class MudgameApplication {
 			System.out.println("숫자만 입력해주세요.");
 		}
 		
-		System.out.println(jobNum);
 
 		
 	}
