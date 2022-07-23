@@ -3,34 +3,39 @@ package com.main;
 import java.util.InputMismatchException;
 
 import com.utils.CharacterSetter;
+import com.utils.Console;
 
 public class MudgameApplication {
 	
 
 	public static void main(String[] args) {
-		CharacterSetter characterSetter = new CharacterSetter(); 
+		CharacterSetter characterSetter = new CharacterSetter();
+		Console console = new Console();
+
 		int jobNum = 0;
-		try {
 			System.out.println("머드게임 을 시작합니다...");
 			System.out.println("캐릭터의 별칭을 입력해주세요.");
 			
 			String name = characterSetter.setCharacterName();
 			System.out.println("당신의 캐릭터의 별칭은 \"" + name + "\"입니다." );
+		try {
 			Thread.sleep(1000);
-			
-			System.out.println("당신의 캐릭터의 직업을 고르세요.");
-			System.out.println("1. 전사");
-			System.out.println("2. 궁수");
-			System.out.println("3. 도적");
-			System.out.println("4. 마법사");
-			jobNum = characterSetter.setCharacterJobNum();
-
 		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (InputMismatchException e) {
-			System.out.println("숫자만 입력해주세요.");
+			throw new RuntimeException(e);
 		}
-		
+		console.clearConsole();
+
+
+				System.out.println("당신의 캐릭터의 직업을 고르세요.");
+				System.out.println("1. 전사");
+				System.out.println("2. 궁수");
+				System.out.println("3. 도적");
+				System.out.println("4. 마법사");
+				jobNum = characterSetter.setCharacterJobNum();
+
+
+
+
 
 		
 	}

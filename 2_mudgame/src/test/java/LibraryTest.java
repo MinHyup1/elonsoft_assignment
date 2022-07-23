@@ -1,15 +1,15 @@
 
-import org.junit.Test;
 
 import com.main.MudgameApplication;
 
 public class LibraryTest {
-	MudgameApplication app = new MudgameApplication();
-	
+
     @Test
-    public void exceptionTest() {
-
-
+    public void stage_1_test() {
+        Stage stage = new Stage();
     }
+
+
+
 
 }
