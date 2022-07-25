@@ -50,7 +50,6 @@ public class Character {
                     System.out.println("올바른 숫자를 입력해주세요");
                     continue;
                 }
-
                 if(jobNum == '1') { }
                 if(jobNum == '2') { }
                 if(jobNum == '3') { }
