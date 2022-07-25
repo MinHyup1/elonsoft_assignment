@@ -6,7 +6,5 @@ public class Console {
         for (int i = 0; i < 30; i++) {
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
-
-
     }
 }
