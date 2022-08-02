@@ -53,7 +53,7 @@ public class Character {
                     System.out.println("올바른 숫자를 입력해주세요");
                     continue;
                 }
-                if (jobNum == '1') {
+                if (jobNum == 1) {
                     this.characterJob.setJonName("전사");
                     this.characterJob.setJobSkillName_1("파워스트라이크");
                     this.characterJob.setJobSkillName_1("스피어 버스터");
@@ -76,9 +76,9 @@ public class Character {
                     };
 
                 };
-                if(jobNum == '2') { }
-                if(jobNum == '3') { }
-                if(jobNum == '4') { }
+                if(jobNum == 2) { }
+                if(jobNum == 3) { }
+                if(jobNum == 4) { }
 
             }catch (InputMismatchException e) {//무한로프에 빠지는거 해결
                 System.out.println("숫자만 입력해주세요.");

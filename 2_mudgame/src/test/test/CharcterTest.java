@@ -1,4 +1,3 @@
-package test;
 
 import com.main.charater.Character;
 import org.junit.jupiter.api.Test;
