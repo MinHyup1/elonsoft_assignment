@@ -54,10 +54,6 @@ public class Character {
                     continue;
                 }
                 if (jobNum == 1) {
-                    this.characterJob.setJonName("전사");
-                    this.characterJob.setJobSkillName_1("파워스트라이크");
-                    this.characterJob.setJobSkillName_1("스피어 버스터");
-                    this.characterJob.setJobSkillName_Ultimate("드래곤 로어");
                     this.characterJob = new CharacterJob() {
                         @Override
                         public void jobSkill_1(int damage) {
@@ -91,7 +87,6 @@ public class Character {
 
     public void printChracterInfo() {
         System.out.println("name     :  " + this.name );
-        System.out.println("jobName  :  " + this.characterJob.getJonName() );
         System.out.println("level    :  " + this.level );
         System.out.println("curExp   :  " + this.curExp + "/" + this.maxExp  );
     }
