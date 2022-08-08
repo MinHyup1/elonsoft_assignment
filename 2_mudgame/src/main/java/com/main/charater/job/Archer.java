@@ -5,15 +5,15 @@ import lombok.Getter;
 import java.util.Map;
 
 @Getter
-public class Warrior extends Job {
+public class Archer extends Job {
 
     //static final을 하는이유 - 값을 불변으로 만들기위해 , static 생성자를 통해 값을 참조 방지
-    private static final String jobName = "전사";
+    private static final String jobName = "궁수";
 
 
     @Override
     Map<String, Double> SetJobSkill_2(int damage) {//사용가능레벨 : 5
-        return Map.of("파워스트라이크" ,(damage * 1.5) * (1 + Math.random()));
+        return Map.of("더블 샷" ,(damage * 1.5) * (1 + Math.random()));
     }
 
     @Override

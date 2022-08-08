@@ -1,5 +1,7 @@
 package com.main.charater;
 
+import com.main.charater.job.Job;
+import com.main.charater.job.Warrior;
 import lombok.Getter;
 
 import java.util.InputMismatchException;
@@ -13,7 +15,8 @@ public class Character {
     private int curExp = 0;
     private int maxExp = 5;
     private int damage = 10;
-    private CharacterJob characterJob;
+
+    private Object Job;
 
 
     public static final Scanner sc = new Scanner(System.in);
@@ -49,33 +52,14 @@ public class Character {
             try {
                 int jobNum = sc.nextInt();
 
-                if (jobNum == 0 || jobNum > 4) {
-                    System.out.println("올바른 숫자를 입력해주세요");
+                switch (jobNum) {
+                    case 1 : this.Job = new Warrior(); break;
+                    case 2 : this.Job = new Warrior(); break;
+                    case 3 : this.Job = new Warrior(); break;
+                    case 4 : this.Job = new Warrior(); break;
+                    default: System.out.println("올바른 숫자를 입력해주세요");
                     continue;
                 }
-                if (jobNum == 1) {
-                    this.characterJob = new CharacterJob() {
-                        @Override
-                        public void jobSkill_1(int damage) {
-
-                        }
-
-                        @Override
-                        public void jobSkill_2(int damage) {
-
-                        }
-
-                        @Override
-                        public void jobSkill_Ultimate(int damage) {
-
-                        }
-                    };
-
-                };
-                if(jobNum == 2) { }
-                if(jobNum == 3) { }
-                if(jobNum == 4) { }
-
             }catch (InputMismatchException e) {//무한로프에 빠지는거 해결
                 System.out.println("숫자만 입력해주세요.");
                 sc.nextLine();
@@ -85,10 +69,11 @@ public class Character {
         }
     };
 
-    public void printChracterInfo() {
-        System.out.println("name     :  " + this.name );
+    public void printCharacterInfo() {
+        System.out.println("이름     :  " + this.name );
+        System.out.println("직업     :  " + this.getJob().toString() );
         System.out.println("level    :  " + this.level );
-        System.out.println("curExp   :  " + this.curExp + "/" + this.maxExp  );
+        System.out.println("경험치   :  " + this.curExp + "/" + this.maxExp  );
     }
 
 
