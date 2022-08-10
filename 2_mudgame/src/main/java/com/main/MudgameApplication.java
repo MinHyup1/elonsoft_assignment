@@ -28,6 +28,7 @@ public class MudgameApplication {
 		character.setCharacterJob();
 
 		console.clearConsole();
+
 		character.printCharacterInfo();
 
 

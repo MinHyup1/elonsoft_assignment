@@ -1,8 +1,12 @@
 package com.main.charater.job;
 
-import java.util.Map;
+import lombok.Data;
+import lombok.Getter;
 
+import java.util.Map;
+@Getter
 public abstract class Job {
+    String jobname;
 
     public Map<String, Double> attack (int damage) {
         return Map.of("기본공격" ,damage * (1 + Math.random()));

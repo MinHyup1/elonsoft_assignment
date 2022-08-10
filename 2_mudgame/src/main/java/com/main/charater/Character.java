@@ -1,5 +1,6 @@
 package com.main.charater;
 
+import com.main.charater.job.Archer;
 import com.main.charater.job.Job;
 import com.main.charater.job.Warrior;
 import lombok.Getter;
@@ -16,7 +17,7 @@ public class Character {
     private int maxExp = 5;
     private int damage = 10;
 
-    private Object Job;
+    private com.main.charater.job.Job Job;
 
 
     public static final Scanner sc = new Scanner(System.in);
@@ -54,12 +55,13 @@ public class Character {
 
                 switch (jobNum) {
                     case 1 : this.Job = new Warrior(); break;
-                    case 2 : this.Job = new Warrior(); break;
+                    case 2 : this.Job = new Archer(); break;
                     case 3 : this.Job = new Warrior(); break;
                     case 4 : this.Job = new Warrior(); break;
                     default: System.out.println("올바른 숫자를 입력해주세요");
                     continue;
                 }
+                break;
             }catch (InputMismatchException e) {//무한로프에 빠지는거 해결
                 System.out.println("숫자만 입력해주세요.");
                 sc.nextLine();
@@ -71,7 +73,7 @@ public class Character {
 
     public void printCharacterInfo() {
         System.out.println("이름     :  " + this.name );
-        System.out.println("직업     :  " + this.getJob().toString() );
+        System.out.println("직업     :  " + getJob().getJobname() );
         System.out.println("level    :  " + this.level );
         System.out.println("경험치   :  " + this.curExp + "/" + this.maxExp  );
     }
