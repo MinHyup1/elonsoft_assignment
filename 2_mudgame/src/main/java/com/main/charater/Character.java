@@ -1,8 +1,6 @@
 package com.main.charater;
 
-import com.main.charater.job.Archer;
-import com.main.charater.job.Job;
-import com.main.charater.job.Warrior;
+import com.main.charater.job.*;
 import lombok.Getter;
 
 import java.util.InputMismatchException;
@@ -56,8 +54,8 @@ public class Character {
                 switch (jobNum) {
                     case 1 : this.Job = new Warrior(); break;
                     case 2 : this.Job = new Archer(); break;
-                    case 3 : this.Job = new Warrior(); break;
-                    case 4 : this.Job = new Warrior(); break;
+                    case 3 : this.Job = new Magician(); break;
+                    case 4 : this.Job = new Thief(); break;
                     default: System.out.println("올바른 숫자를 입력해주세요");
                     continue;
                 }
