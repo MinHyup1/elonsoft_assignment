@@ -1,12 +1,16 @@
 package com.main;
 
 import com.main.charater.Character;
+import com.main.gameController.Controller;
 import com.main.map.Stage;
 import com.utils.Console;
 import com.utils.StageUtil;
 
+import java.util.Map;
+import java.util.Scanner;
+
 public class MudgameApplication {
-	public static void main(String[] args) {
+	public static <mainController> void main(String[] args) {
 		final Console console = new Console();
 
 		int jobNum = 0;
@@ -32,11 +36,14 @@ public class MudgameApplication {
 		console.clearConsole();
 
 		character.printCharacterInfo();
-
 		Stage stage_1 = new Stage();
-		StageUtil stageUtil = new StageUtil();
+		Controller controller = new Controller();
 
-		stageUtil.printStage(stage_1.getStage());
+
+		controller.mainController(character ,stage_1);
+
+
+
 
 
 

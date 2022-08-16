@@ -18,7 +18,7 @@ public class Character {
     private com.main.charater.job.Job Job;
 
 
-    public static final Scanner sc = new Scanner(System.in);
+    private  Scanner sc = new Scanner(System.in);
 
     public String setCharacterName () {
         String name = sc.nextLine().trim();
