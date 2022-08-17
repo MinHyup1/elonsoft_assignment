@@ -22,6 +22,7 @@ public class Controller {
                 case "s" :
                 default: continue;
             }
+            
 
             StageUtil.printStage(stage_1);
             System.out.println("a : 왼쪽으로 이동   w : 위로 이동  d : 오른쪽으로 이동  s : 아래로 이동");
