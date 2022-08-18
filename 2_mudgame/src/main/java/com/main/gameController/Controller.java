@@ -8,31 +8,44 @@ import com.utils.StageUtil;
 import java.util.Scanner;
 
 public class Controller {
+    Stage stage_1 = new Stage();
 
-    public void mainController (Character character, Stage stage_1) {
+    public void mainController (Character character) {
         boolean on = true;
+        boolean isInfo = false;
         while (on) {
             Console.clearConsole();
-            switch (new Scanner(System.in).nextLine()) {
-                case "1" : character.printCharacterInfo();break;
-                case "2" : on = false; continue;
-                case "a" :
-                case "w" :
-                case "d" :
-                case "s" :
-                default: continue;
-            }
-            
-
-            StageUtil.printStage(stage_1);
+            if(isInfo) character.printCharacterInfo(); isInfo=false;
+            Scanner input = new Scanner(System.in);
+            StageUtil.printStage(character.getLocation());
             System.out.println("a : 왼쪽으로 이동   w : 위로 이동  d : 오른쪽으로 이동  s : 아래로 이동");
             System.out.println("1. 캐릭터 정보 2.게임 종료");
+            switch (input.nextLine()) {
+                case "1" : isInfo = true; break;
+                case "2" : on = false; continue;
+                case "a" : moveLeft(character);
+                case "w" : moveUp(character);
+                case "d" : moveRight(character);
+                case "s" : moveDown(character);
+                default: continue;
+            }
+
         }
+    }
 
+    private void moveUp(Character character) {
+        if (character.getLocation().split(",")[0].equals("1"))
+        for (int i = 0; i < character.getLocation().split(",").length; i++) {
+            System.out.println();
+        }
+    }
 
+    private void moveDown(Character character) {
+    }
 
+    private void moveLeft(Character character) {
+    }
 
-
-
+    private void moveRight(Character character) {
     }
 }

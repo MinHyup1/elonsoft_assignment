@@ -36,11 +36,11 @@ public class MudgameApplication {
 		console.clearConsole();
 
 		character.printCharacterInfo();
-		Stage stage_1 = new Stage();
+
 		Controller controller = new Controller();
 
 
-		controller.mainController(character ,stage_1);
+		controller.mainController(character);
 
 
 

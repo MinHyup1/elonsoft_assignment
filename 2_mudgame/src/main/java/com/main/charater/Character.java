@@ -1,7 +1,9 @@
 package com.main.charater;
 
 import com.main.charater.job.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -14,6 +16,10 @@ public class Character {
     private int curExp = 0;
     private int maxExp = 5;
     private int damage = 10;
+
+    //스테이지,Y좌표,X좌표
+    @Setter
+    private String location = "1,3,0";
 
     private com.main.charater.job.Job Job;
 
