@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 public class MudgameApplication {
 	public static <mainController> void main(String[] args) {
-		final Console console = new Console();
-
 		int jobNum = 0;
 			System.out.println("머드게임 을 시작합니다...");
 			System.out.println("캐릭터의 별칭을 입력해주세요.");
@@ -24,7 +22,7 @@ public class MudgameApplication {
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-		console.clearConsole();
+		Console.clearConsole();
 
 		System.out.println("당신의 캐릭터의 직업을 고르세요.");
 		System.out.println("1. 전사");
@@ -33,7 +31,7 @@ public class MudgameApplication {
 		System.out.println("4. 마법사");
 		character.setCharacterJob();
 
-		console.clearConsole();
+		Console.clearConsole();
 
 		character.printCharacterInfo();
 
