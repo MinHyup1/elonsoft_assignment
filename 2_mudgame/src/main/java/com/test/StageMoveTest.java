@@ -14,9 +14,6 @@ public class StageMoveTest {
         Character character =  new Character();
 
 
-            for (int i = 0; i < character.getLocation().length; i++) {
-                System.out.println(character.getLocation()[i]);
-            }
 
 
     }

@@ -2,7 +2,7 @@ package com.main.map;
 
 import com.main.monster.stage_1.Snail;
 import lombok.Data;
-
+import lombok.Getter;
 @Data
 public class Stage {
     //모든스테이지는 41 X 8 으로 구성되어있음
@@ -19,5 +19,18 @@ public class Stage {
             {" ", " ", " ", " ", " ", " ", " ", snail.getImg(), " ", " ", " ", " ", " ", snail.getImg(), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", snail.getImg(), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "},
             {"■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■", "■"}
     };
+
+    public String[][] getStage(int stageNum) {
+        if(stageNum == 1) return this.stage_1;
+        return null;
+    }
+
+    public void setStage(String[][] stage_1 , int stageNum) {
+        switch (stageNum) {
+            case 1 : this.stage_1 = stage_1; break;
+        }
+    }
+
+
 }
 

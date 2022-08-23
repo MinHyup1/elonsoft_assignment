@@ -19,7 +19,10 @@ public class Character {
 
     //스테이지,Y좌표,X좌표
     @Setter
-    private int[] location = {1,3,0};
+    private int[] beforeLocation = {1,3,0};
+
+    @Setter
+    private int[] afterLocation = {1,3,0};
 
     private com.main.charater.job.Job Job;
 
