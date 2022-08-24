@@ -22,7 +22,7 @@ public class Character {
     private int[] beforeLocation = {1,3,0};
 
     @Setter
-    private int[] afterLocation = {1,3,0};
+    private int[] nowLocation = {1,3,0};
 
     private com.main.charater.job.Job Job;
 

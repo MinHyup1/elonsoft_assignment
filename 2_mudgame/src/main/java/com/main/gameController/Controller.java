@@ -5,7 +5,6 @@ import com.main.map.Stage;
 import com.utils.Console;
 import com.utils.StageUtil;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class Controller {
@@ -23,41 +22,122 @@ public class Controller {
                 isInfo=false;
             }
 
-            printController(character.getAfterLocation(), stage);
+            printController(character.getNowLocation(), stage);
             Scanner input = new Scanner(System.in);
             switch (input.nextLine()) {
                 case "1" : isInfo = true; break;
                 case "2" : on = false; continue;
-                case "a" : moveLeft(character, stage);
-                case "w" : moveUp(character, stage);
-                case "d" : moveRight(character);
-                case "s" : moveDown(character);
+                case "a" :  move(character, stage ,"left");  break;
+                case "w" :  move(character, stage ,"up");    break;
+                case "d" :  move(character, stage ,"right"); break;
+                case "s" :  move(character, stage ,"down");  break;
                 default: continue;
             }
 
         }
     }
 
-    private Map<String,int[]> moveUp(Character character ,Stage stage) {
+    private void move(Character character ,Stage stage, String direction) {
         int stageNum = character.getBeforeLocation()[0];
         String[][] afterStage = stage.getStage(stageNum);
-        afterStage[character.getBeforeLocation()[1]][character.getBeforeLocation()[2]] = "";
-        afterStage[character.getAfterLocation()[1]][character.getAfterLocation()[2]] = "🧍";
-        character.setBeforeLocation(character.getBeforeLocation());
-        //20220823 여기부터
+
+        //이동중 벅을 만날시 리턴
+        if((character.getNowLocation()[1] == 1 && "up".equals(direction) )
+                || (character.getNowLocation()[2] == 0 && "left".equals(direction))
+                || (character.getNowLocation()[2] == 40 && "right".equals(direction))
+                || (character.getNowLocation()[1] == 7 && "down".equals(direction)) ) return;
+
+        //이동전 캐릭터가 있던자리는 " "
+        afterStage[character.getBeforeLocation()[1]][character.getBeforeLocation()[2]] = "  ";
+
+        //키를 누른 위치로 현재 캐릭터의 위치좌표를 변경
+        switch (direction) {
+            case "up"   : character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1] - 1, character.getBeforeLocation()[2]}); break;
+            case "right": character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1], character.getBeforeLocation()[2] + 1}); break;
+            case "down" : character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1] + 1, character.getBeforeLocation()[2]}); break;
+            case "left" : character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1], character.getBeforeLocation()[2] - 1}); break;
+        }
+
+        //현재 캐릭터의 위치를 표시
+        afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] = "🧍";
+
+        //캐릭터의 이전위치를 현재이동한 위치로 저장
+        character.setBeforeLocation(character.getNowLocation());
 
         stage.setStage(afterStage,stageNum);
 
-        return null;
+
+    }
+
+    private void moveUp(Character character ,Stage stage) {
+        int stageNum = character.getBeforeLocation()[0];
+        String[][] afterStage = stage.getStage(stageNum);
+
+        //이동중 벅을 만날시 리턴
+        if(character.getNowLocation()[1] == 1) return;
+
+        //이동전 캐릭터가 있던자리는 " "
+        afterStage[character.getBeforeLocation()[1]][character.getBeforeLocation()[2]] = "  ";
+
+        //현재 캐릭터의 위치를 한칸 위로 이동
+        character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1] - 1, character.getBeforeLocation()[2]});
+
+        //현재 캐릭터의 위치를 표시
+        afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] = "🧍";
+
+        //캐릭터의 이전위치를 현재이동한 위치로 저장
+        character.setBeforeLocation(character.getNowLocation());
+
+        stage.setStage(afterStage,stageNum);
+
     }
 
     private void moveDown(Character character) {
+
     }
 
     private void moveLeft(Character character, Stage stage) {
+        int stageNum = character.getBeforeLocation()[0];
+        String[][] afterStage = stage.getStage(stageNum);
+
+        //이동중 벅을 만날시 리턴
+        if(character.getNowLocation()[2] == 0) return;
+
+        //이동전 캐릭터가 있던자리는 " "
+        afterStage[character.getBeforeLocation()[1]][character.getBeforeLocation()[2]] = "  ";
+
+        //현재 캐릭터의 위치를 한칸 좌측으로 이동
+        character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1], character.getBeforeLocation()[2] -1});
+
+        //현재 캐릭터의 위치를 표시
+        afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] = "🧍";
+
+        //캐릭터의 이전위치를 현재이동한 위치로 저장
+        character.setBeforeLocation(character.getNowLocation());
+
+        stage.setStage(afterStage,stageNum);
     }
 
-    private void moveRight(Character character) {
+    private void moveRight(Character character, Stage stage) {
+        int stageNum = character.getBeforeLocation()[0];
+        String[][] afterStage = stage.getStage(stageNum);
+
+        //이동중 벅을 만날시 리턴
+        if(character.getNowLocation()[2] == 40) return;
+
+        //이동전 캐릭터가 있던자리는 " "
+        afterStage[character.getBeforeLocation()[1]][character.getBeforeLocation()[2]] = "  ";
+
+        //현재 캐릭터의 위치를 한칸 우측으로 이동
+        character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1], character.getBeforeLocation()[2] + 1});
+
+        //현재 캐릭터의 위치를 표시
+        afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] = "🧍";
+
+        //캐릭터의 이전위치를 현재이동한 위치로 저장
+        character.setBeforeLocation(character.getNowLocation());
+
+        stage.setStage(afterStage,stageNum);
     }
 
     private  void printController (int[] afterLocation, Stage stage) {
