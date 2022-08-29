@@ -2,6 +2,7 @@ package com.main.gameController;
 
 import com.main.charater.Character;
 import com.main.map.Stage;
+import com.main.monster.Monster;
 import com.utils.Console;
 import com.utils.StageUtil;
 
@@ -39,7 +40,7 @@ public class Controller {
 
     private void move(Character character ,Stage stage, String direction) {
         int stageNum = character.getBeforeLocation()[0];
-        String[][] afterStage = stage.getStage(stageNum);
+        Object[][] afterStage = stage.getStage(stageNum);
 
         //이동중 벅을 만날시 리턴
         if((character.getNowLocation()[1] == 1 && "up".equals(direction) )
@@ -57,6 +58,12 @@ public class Controller {
             case "down" : character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1] + 1, character.getBeforeLocation()[2]}); break;
             case "left" : character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1], character.getBeforeLocation()[2] - 1}); break;
         }
+        
+        //이동한 위치에 몬스터가 위치 할 경우
+        if(afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] instanceof Monster) {
+            battleToMonster((Monster) afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]]);
+
+        }
 
         //현재 캐릭터의 위치를 표시
         afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] = "🧍";
@@ -69,75 +76,12 @@ public class Controller {
 
     }
 
-    private void moveUp(Character character ,Stage stage) {
-        int stageNum = character.getBeforeLocation()[0];
-        String[][] afterStage = stage.getStage(stageNum);
+    private void battleToMonster(Monster monster) {
+        boolean isMonsterAlive = true;
+        while (isMonsterAlive) {
+            System.out.println("야생의 " + monster.getName() + "이(가) 나타났다!!!");
 
-        //이동중 벅을 만날시 리턴
-        if(character.getNowLocation()[1] == 1) return;
-
-        //이동전 캐릭터가 있던자리는 " "
-        afterStage[character.getBeforeLocation()[1]][character.getBeforeLocation()[2]] = "  ";
-
-        //현재 캐릭터의 위치를 한칸 위로 이동
-        character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1] - 1, character.getBeforeLocation()[2]});
-
-        //현재 캐릭터의 위치를 표시
-        afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] = "🧍";
-
-        //캐릭터의 이전위치를 현재이동한 위치로 저장
-        character.setBeforeLocation(character.getNowLocation());
-
-        stage.setStage(afterStage,stageNum);
-
-    }
-
-    private void moveDown(Character character) {
-
-    }
-
-    private void moveLeft(Character character, Stage stage) {
-        int stageNum = character.getBeforeLocation()[0];
-        String[][] afterStage = stage.getStage(stageNum);
-
-        //이동중 벅을 만날시 리턴
-        if(character.getNowLocation()[2] == 0) return;
-
-        //이동전 캐릭터가 있던자리는 " "
-        afterStage[character.getBeforeLocation()[1]][character.getBeforeLocation()[2]] = "  ";
-
-        //현재 캐릭터의 위치를 한칸 좌측으로 이동
-        character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1], character.getBeforeLocation()[2] -1});
-
-        //현재 캐릭터의 위치를 표시
-        afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] = "🧍";
-
-        //캐릭터의 이전위치를 현재이동한 위치로 저장
-        character.setBeforeLocation(character.getNowLocation());
-
-        stage.setStage(afterStage,stageNum);
-    }
-
-    private void moveRight(Character character, Stage stage) {
-        int stageNum = character.getBeforeLocation()[0];
-        String[][] afterStage = stage.getStage(stageNum);
-
-        //이동중 벅을 만날시 리턴
-        if(character.getNowLocation()[2] == 40) return;
-
-        //이동전 캐릭터가 있던자리는 " "
-        afterStage[character.getBeforeLocation()[1]][character.getBeforeLocation()[2]] = "  ";
-
-        //현재 캐릭터의 위치를 한칸 우측으로 이동
-        character.setNowLocation(new int[]{character.getBeforeLocation()[0], character.getBeforeLocation()[1], character.getBeforeLocation()[2] + 1});
-
-        //현재 캐릭터의 위치를 표시
-        afterStage[character.getNowLocation()[1]][character.getNowLocation()[2]] = "🧍";
-
-        //캐릭터의 이전위치를 현재이동한 위치로 저장
-        character.setBeforeLocation(character.getNowLocation());
-
-        stage.setStage(afterStage,stageNum);
+        }
     }
 
     private  void printController (int[] afterLocation, Stage stage) {

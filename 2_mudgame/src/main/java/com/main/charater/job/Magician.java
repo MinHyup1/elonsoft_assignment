@@ -9,7 +9,7 @@ public class Magician extends Job {
 
     //static final을 하는이유 - 값을 불변으로 만들기위해 , static 생성자를 통해 값을 참조 방지
     public Magician() {
-        this.jobname = "법사";
+        this.jobname = "마법사";
     }
 
 
